@@ -16,12 +16,18 @@ interface Schedule {
   courses: Record<string, Course>;
 }
 
-// ...e
-
 const TermPage = ({ schedule }: { schedule: Schedule } ) => {
-
+    
+    //stores selected term, default is "Fall"
     const [selected, setSelected] = useState("Fall");
+
+    //stores selected courses in an array
+    const [selectedCourses, setSelectedCourses] = useState<string[]>([]);
+
+    // get the unique terms from the schedule
     const terms = [...new Set(Object.values(schedule.courses).map(course => course.term))];
+
+    //filter the courses based on term
     const filteredCourses = Object.fromEntries(
         Object.entries(schedule.courses).filter(([_, course]) => course.term === selected));
 
@@ -29,7 +35,7 @@ const TermPage = ({ schedule }: { schedule: Schedule } ) => {
         <div>
             <Banner title={schedule.title} />
             <TermSelector name={"term"} options={terms} selected={selected} setSelected={setSelected} />
-            <CourseList courses={filteredCourses} />
+            <CourseList courses={filteredCourses} selectedCourses={selectedCourses} setSelectedCourses={setSelectedCourses} />
         </div>
     );
 };
