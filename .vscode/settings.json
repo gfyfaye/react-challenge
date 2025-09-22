@@ -1,0 +1,4 @@
+{
+    "chat.detectParticipant.enabled": true,
+    "chat.editRequests": "none"
+}
