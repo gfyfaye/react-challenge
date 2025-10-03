@@ -1,5 +1,6 @@
 import { parseDays, parseHours, hasConflict } from '../utilities/timeconflict';
 import { occupied as importedOccupied } from '../utilities/timeconflict';
+import { Link } from '@tanstack/react-router';
 
 const occupied: Record<string, any[]> = importedOccupied;
 
@@ -77,8 +78,14 @@ const CourseList = ({ courses, selectedCourses, setSelectedCourses }: CourseList
 
                         <div className="border-t border-gray-200 my-2"></div>
 
-                        <div>
-                            {course.meets}
+                        <div className="flex justify-between items-center">
+                            <span>{course.meets}</span>
+                            <Link to="/course/edit/$courseId" 
+                                params={{ courseId: id }}
+                                onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                                className="ml-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">
+                                Edit
+                            </Link>
                         </div>
                     </div>
                 );

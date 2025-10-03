@@ -41,7 +41,7 @@ const TermPage = ({ schedule }: { schedule: Schedule } ) => {
 
             <div className = "flex gap-4 place-content-center items-center">
               <TermSelector name={"term"} options={terms} selected={selected} setSelected={setSelected} />
-              <button className = "bg-cyan-400 p-2 rounded-md " onClick={() => setModalOpen(true)} > Show Schedule </button>
+              <button className = "border-3 border-blue-5 00 p-2 rounded-md " onClick={() => setModalOpen(true)} > Show Schedule </button>
             </div>
 
             <CourseList courses={filteredCourses} selectedCourses={selectedCourses} setSelectedCourses={setSelectedCourses} />
